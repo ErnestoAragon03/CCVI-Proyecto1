@@ -8,18 +8,19 @@ $db -> exec("CREATE TABLE IF NOT EXISTS Tarjetas (
     nombre VARCHAR(40),
     fecha_venc DATE,
     cvv INTEGER,
-    monto_autorizado INTEGER,
-    total INTEGER
+    monto_autorizado REAL,
+    total REAL
 )");
 
 //Crear Tabla Solicitud
-$db -> exec("CREATE TABLE IF NOT EXISTS Solicitud (
-    tarjeta INTEGER PRIMARY KEY,
+$db -> exec("CREATE TABLE IF NOT EXISTS transacciones (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    num_tarjeta INTEGER,
     nombre VARCHAR(40),
-    fecha_venc DATE
+    tipo VARCHAR(8),
     num_seguridad INTEGER,
-    monto INTEGER,
-    autorizacion INTEGER
+    monto REAL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )");
 
 echo "Base da datos y tablas creadas exitosamente";
