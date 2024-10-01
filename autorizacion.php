@@ -31,28 +31,59 @@ try {
                         WHERE num_tarjeta = :tarjeta 
                         AND nombre = :nombre 
                         AND fecha_venc = :fecha_venc 
-                        AND cvv = :num_seguridad 
-                        AND monto_autorizado >= :monto
-                        AND total >= :monto');
+                        AND cvv = :num_seguridad');
+
     $stmt->bindParam(':tarjeta', $tarjeta);
     $stmt->bindParam(':nombre', $nombre);
     $stmt->bindParam(':fecha_venc', $fecha_venc);
     $stmt->bindParam(':num_seguridad', $num_seguridad);
-    $stmt->bindParam(':monto', $monto);
     
     $stmt->execute();
     
     $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($resultado) {
         //La tarjeta fue encontrada, continuar el proceso
+
+        // Verificar si el monto es menor que el saldo total y el monto autorizado
+        if ($monto <= $resultado['total'] && $monto <= $resultado['monto_autorizado']) {
+            // Restar el monto del saldo total
+            $nuevo_saldo = $resultado['total'] - $monto;
+
+            // Actualizar el saldo en la base de datos
+            $update_stmt = $db->prepare('UPDATE tarjetas SET total = :nuevo_saldo WHERE num_tarjeta = :tarjeta');
+            $update_stmt->bindParam(':nuevo_saldo', $nuevo_saldo);
+            $update_stmt->bindParam(':tarjeta', $tarjeta);
+            $update_stmt->execute();
+            
+            $status = 1;
+            // Aprobar la transacción
+            echo "<p>Transacción aprobada. Nuevo saldo: $nuevo_saldo</p>";
+
+            // Registrar la transacción en la tabla transacciones
+            $insert_stmt = $db->prepare('INSERT INTO transacciones (num_tarjeta, nombre, tipo, monto)' 
+                                                . 'VALUES (:tarjeta, :nombre, "consumo", :monto)');
+            $insert_stmt->bindParam(':tarjeta', $tarjeta);
+            $insert_stmt->bindParam(':nombre', $nombre);
+            $insert_stmt->bindParam(':monto', $monto);
+            $insert_stmt->execute();
+
+            echo "<p>Transacción registrada exitosamente en la base de datos.</p>";
+        } else {
+            // Rechazar la transacción e indicar el motivo
+            if ($monto > $resultado['total']) {
+                echo "<p>Transacción rechazada: Fondos insuficientes.</p>";
+            }
+            else if ($monto > $resultado['monto_autorizado']) {
+                echo "<p>Transacción rechazada: El monto autorizado es menor a la compra.</p>";
+            }
+            $status = 0;
+        }
+
         //Preparar datos
         $datos = [
+            "emisor" => 'visa',
             "tarjeta" => $tarjeta,
-            "nombre"=> $nombre,
-            "fecha_venc"=> $fecha_venc,
-            "num_seguridad"=> $num_seguridad,
-            "monto"=> $monto,
-            "tienda" => $tienda
+            "status"=> $status,
         ];
         /////////////Seleccionar tipo de formato////////////////
         if($formato === 'json') {

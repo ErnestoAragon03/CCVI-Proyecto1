@@ -18,7 +18,6 @@ $db -> exec("CREATE TABLE IF NOT EXISTS transacciones (
     num_tarjeta INTEGER,
     nombre VARCHAR(40),
     tipo VARCHAR(8),
-    num_seguridad INTEGER,
     monto REAL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )");

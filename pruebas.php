@@ -12,6 +12,6 @@ try {
     exit;
 }
 $stmt = $db->prepare('INSERT INTO tarjetas (num_tarjeta, nombre, fecha_venc, cvv, monto_autorizado, total)'
-    . 'VALUES (1234567891234567, "Ernesto Aragon", "12/24/31", 123, 500.00, 1000.00)');
+    . 'VALUES (1234567891234567, "Ernesto Aragon", "202412", 123, 500.00, 1000.00)');
 $stmt->execute();
 ?>

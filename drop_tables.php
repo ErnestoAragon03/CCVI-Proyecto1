@@ -4,7 +4,7 @@ $db = new SQLite3('visa.db');
 
 $db -> exec("DROP TABLE TARJETAS");
 
-$db -> exec("DROP TABLE Solicitud");
+$db -> exec("DROP TABLE TRANSACCIONES");
 
 echo "Tablas eliminadas exitosamente";
 
