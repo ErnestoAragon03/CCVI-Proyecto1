@@ -57,24 +57,22 @@ try {
             
             $status = 1;
             // Aprobar la transacción
-            echo "<p>Transacción aprobada. Nuevo saldo: $nuevo_saldo</p>";
 
             // Registrar la transacción en la tabla transacciones
-            $insert_stmt = $db->prepare('INSERT INTO transacciones (num_tarjeta, nombre, tipo, monto)' 
-                                                . 'VALUES (:tarjeta, :nombre, "consumo", :monto)');
+            $insert_stmt = $db->prepare('INSERT INTO transacciones (num_tarjeta, nombre, tipo, tienda, monto)' 
+                                                . 'VALUES (:tarjeta, :nombre, "consumo", :tienda ,:monto)');
             $insert_stmt->bindParam(':tarjeta', $tarjeta);
             $insert_stmt->bindParam(':nombre', $nombre);
             $insert_stmt->bindParam(':monto', $monto);
+            $insert_stmt->bindParam(':tienda', $tienda);
             $insert_stmt->execute();
-
-            echo "<p>Transacción registrada exitosamente en la base de datos.</p>";
         } else {
             // Rechazar la transacción e indicar el motivo
             if ($monto > $resultado['total']) {
-                echo "<p>Transacción rechazada: Fondos insuficientes.</p>";
+                //echo "<p>Transacción rechazada: Fondos insuficientes.</p>";
             }
             else if ($monto > $resultado['monto_autorizado']) {
-                echo "<p>Transacción rechazada: El monto autorizado es menor a la compra.</p>";
+                //echo "<p>Transacción rechazada: El monto autorizado es menor a la compra.</p>";
             }
             $status = 0;
         }

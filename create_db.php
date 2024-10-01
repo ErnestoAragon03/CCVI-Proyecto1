@@ -12,12 +12,13 @@ $db -> exec("CREATE TABLE IF NOT EXISTS Tarjetas (
     total REAL
 )");
 
-//Crear Tabla Solicitud
+//Crear Tabla Transacciones
 $db -> exec("CREATE TABLE IF NOT EXISTS transacciones (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     num_tarjeta INTEGER,
     nombre VARCHAR(40),
     tipo VARCHAR(8),
+    tienda VARCHAR(50),
     monto REAL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )");
