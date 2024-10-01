@@ -29,7 +29,7 @@ try{
         if($actualizacionstmt -> execute()){
 
             $pagotransacstmt = $db -> prepare("INSERT INTO transacciones (num_tarjeta, nombre, tipo, monto, fecha)
-                                               VALUES (:num_tarjeta, :nombre, 'acreditacion', :monto, CURRENT_TIMESTAMP)");
+                                               VALUES (:num_tarjeta, :nombre, 'pagos', :monto, CURRENT_TIMESTAMP)");
             $pagotransacstmt -> bindValue(':num_tarjeta', $num_Tarjeta, SQLITE3_TEXT);
             $pagotransacstmt -> bindValue(':nombre', $nombre, SQLITE3_TEXT);
             $pagotransacstmt -> bindValue(':monto', $monto_acreditar, SQLITE3_TEXT);
