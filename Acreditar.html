@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>
+	   Acreditaciones de Saldo
+    </title>
+	<link rel="stylesheet" href="styleac.css">
+</head>
+
+<body>
+    <div classs="acredit-form">
+        <h2>
+			Acreditar saldo
+		</h2>
+		<form action="acreditar.php" method="POST">
+
+			<div class="input-group">
+			   <label for="nombre">Nombre del propetario</label>
+		       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+		    </div>
+
+			<div class="input-group">
+				<label for="numero-tarjeta">Número de Tarjeta</label>
+				<input type="text" id="numero-tarjeta" name="numero-tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+			</div>
+
+            <div class="input-group"></div>
+				<label for="cvv">CVV</label>
+				<input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+			</div>
+
+			<div class="input-group">
+				<label for="monto">Monto a Acreditar</label>
+				<input type="decimal" id="monto_acreditar" name="monto_acreditar" placeholder="Monto a acreditar" required>
+			</div>
+
+			<button type="submit" class="submit-btn">Acreditar</button>
+
+		</form>
+		
+	 <!--Este comando es para el boton de generar la nueva tarjeta-->
+		<form action ="index.html">
+			<button type="submit" class="generar-btn">Regresar</button>
+		</form>
+    </div>
+	
+</body>
+</html>
