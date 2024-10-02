@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar tarjeta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .acredit-form {
+            width: 400px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #003399;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .input-group input:focus {
+            border-color: #003399;
+            outline: none;
+        }
+
+        .submit-btn, .generar-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #003399;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover, .generar-btn:hover {
+            background-color: #002080;
+        }
+
+        .generar-btn {
+            background-color: #f44336;
+        }
+
+        .generar-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        /* Responsivo para pantallas más pequeñas */
+        @media (max-width: 480px) {
+            .acredit-form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="acredit-form">
+        <h2>Borrar Tarjeta</h2>
+        <form action="borrar_tarjeta.php" method="POST">
+            <div class="input-group">
+                <label for="nombre">Nombre del propietario</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+            </div>
+
+            <div class="input-group">
+                <label for="numero-tarjeta">Número de Tarjeta</label>
+                <input type="text" id="numero-tarjeta" name="numero-tarjeta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+            </div>
+
+            <div class="input-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+            </div>
+
+            <div class="input-group">
+                <label for="monto">Fecha de Vencimiento</label>
+                <input type="decimal" id="fecha_vencimiento" name="fecha_vencimiento" placeholder="Fecha de vencimiento" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Borrar</button>
+        </form>
+
+        <form action="index.html">
+            <button type="submit" class="generar-btn">Regresar</button>
+        </form>
+    </div>
+</body>
+</html>
