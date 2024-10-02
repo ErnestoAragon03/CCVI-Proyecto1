@@ -30,7 +30,9 @@ try{
         $deletestmt -> bindValue(':cvv', $cvv, SQLITE3_TEXT);
         $deletestmt -> bindValue(':fecha_vencimiento', $fecha_vencimiento, SQLITE3_TEXT);
             if($deletestmt -> execute()){
-                echo "La tarjeta ha sido eliminada exitosamente.";
+                echo "<div style='font-family: Arial, sans-serif; font-size: 18px; color: green; text-align: center; margin-top: 20px;'>
+                        <strong>¡Tarjeta eliminada exitosamente!</strong>
+                      </div>";
             } else {
                 echo "Hubo un error en la eliminación, revise los datos";
             }

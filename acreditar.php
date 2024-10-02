@@ -65,7 +65,7 @@ try{
 
 
 <div class="acredit-form">
-    <form action="acreditar.html">
+    <form action="index.html">
         <button type="submit" class="generar-btn">Regresar</button>
     </form>
 </div>

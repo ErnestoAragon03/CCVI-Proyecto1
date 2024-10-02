@@ -33,7 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(':total', $monto_total);
 
             $stmt->execute();
-            echo "Tarjeta creada exitosamente.";
+            echo "<div style='font-family: Arial, sans-serif; font-size: 18px; color: green; text-align: center; margin-top: 20px;'>
+                        <strong>¡El saldo se acreditó exitosamente!</strong>
+                      </div>";
         } catch (PDOException $e) {
             echo "Error al insertar tarjeta: " . $e->getMessage();
         }
