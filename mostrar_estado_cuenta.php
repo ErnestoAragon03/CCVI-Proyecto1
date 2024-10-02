@@ -62,3 +62,5 @@ if ($tarjeta && $titular) {
     echo "Faltan uno o más parámetros en el formulario.";
 }
 ?>
+
+<button onclick="window.location.href='index.html';">Regresar</button>

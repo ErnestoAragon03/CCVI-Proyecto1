@@ -44,3 +44,4 @@ try{
     echo "Hubo un error: ". $e->getMessage();
 }
 ?>
+<button onclick="window.location.href='index.html';">Regresar</button>
