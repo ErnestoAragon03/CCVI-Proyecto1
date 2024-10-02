@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gestión de Tarjetas - Visa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #003399;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 150px;
+            background-color: white; /* Fondo blanco */
+            padding: 10px; /* Espacio entre el logo y el fondo blanco */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el logo */
+        }
+
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 50px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        main h1 {
+            color: #003399;
+        }
+
+        .service-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .service-box {
+            width: 30%;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-box h2 {
+            color: #003399;
+            margin-bottom: 15px;
+        }
+
+        .service-box p {
+            color: #555;
+        }
+
+        .service-box a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #003399;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #003399;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Logo de Visa">
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Acreditar.html">Acreditar Tarjeta</a></li>
+                <li><a href="borrar.html">Borrar Tarjetas</a></li>
+                <li><a href="estado_cuenta.html">Estado de Cuenta</a></li>
+                <li><a href="FormulariodePago.html">Formulario de Pago</a></li>
+                <li><a href="generar.html">Generar Reportes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Bienvenido a la Gestión de Tarjetas</h1>
+        <p>Explore nuestras herramientas para la gestión de sus tarjetas de crédito y débito.</p>
+
+        <div class="service-section">
+            <div class="service-box">
+                <h2>Acreditar Tarjetas</h2>
+                <p>Añada nuevas tarjetas de crédito o débito a su cuenta de forma rápida y segura.</p>
+                <a href="Acreditar.html">Acreditar ahora</a>
+            </div>
+
+            <div class="service-box">
+                <h2>Borrar Tarjetas</h2>
+                <p>Elimine las tarjetas que ya no necesite o que hayan expirado.</p>
+                <a href="borrar.html">Borrar ahora</a>
+            </div>
+
+            <div class="service-box">
+                <h2>Estado de Cuenta</h2>
+                <p>Revise el estado de cuenta de todas sus tarjetas en un solo lugar.</p>
+                <a href="estado_cuenta.html">Ver estado de cuenta</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Visa. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
