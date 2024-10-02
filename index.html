@@ -43,7 +43,16 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
+			padding: 10px 20px;
+			border-radius: 5px;
+			transition: all 0.3s ease;
         }
+
+		header nav ul li a:hover {
+			background-color: #002d80;
+			color: white;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);			
+		}
 
         main {
             padding: 50px;
@@ -52,6 +61,7 @@
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             margin: 20px;
+			
         }
 
         main h1 {
@@ -70,6 +80,7 @@
             background-color: #e9ecef;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			
         }
 
         .service-box h2 {
@@ -81,13 +92,24 @@
             color: #555;
         }
 
-        .service-box a {
+        .service-box a{
             display: inline-block;
             margin-top: 10px;
             color: #003399;
             text-decoration: none;
             font-weight: bold;
+			padding: 10px 20px;
+			border-radius: 5px;
+			background-color: #938e8e00;
+			transition: all 0.3s ease;
         }
+
+		.service-box a:hover{
+			background-color: #003399;
+			color: white;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+		}
 
         footer {
             background-color: #003399;
@@ -123,7 +145,7 @@
             <div class="service-box">
                 <h2>Acreditar Tarjetas</h2>
                 <p>Añada nuevas tarjetas de crédito o débito a su cuenta de forma rápida y segura.</p>
-                <a href="Acreditar.html">Acreditar ahora</a>
+                <a href="acreditar.html">Acreditar ahora</a>
             </div>
 
             <div class="service-box">
@@ -145,3 +167,7 @@
     </footer>
 </body>
 </html>
+
+
+<!--preguntar si hay una diferencia en el formulario cuando se paga con tarjeta de credito o debito
+esto para ver si coloco otro html para las especificaciones de la debito y credito-->
