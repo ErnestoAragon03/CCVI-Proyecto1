@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de Cuenta</title>
+</head>
+<body>
+    <h1>Consultar Estado de Cuenta</h1>
+    <form action="mostrar_estado_cuenta.php" method="GET">
+        <label for="tarjeta">Número de Tarjeta:</label>
+        <input type="text" id="tarjeta" name="tarjeta" required><br><br>
+
+        <label for="titular">Nombre del Titular:</label>
+        <input type="text" id="titular" name="titular" required><br><br>
+
+        <input type="submit" value="Consultar Estado de Cuenta">
+    </form>
+</body>
+</html>
