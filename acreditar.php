@@ -28,26 +28,44 @@ try{
 
         if($actualizacionstmt -> execute()){
 
-            $pagotransacstmt = $db -> prepare("INSERT INTO transacciones (num_tarjeta, nombre, tipo, monto, fecha)
-                                               VALUES (:num_tarjeta, :nombre, 'pagos', :monto, CURRENT_TIMESTAMP)");
+            $pagotransacstmt = $db -> prepare("INSERT INTO transacciones (num_tarjeta, nombre, tipo, tienda, monto, fecha)
+                                               VALUES (:num_tarjeta, :nombre, 'pagos', 'ingreso', :monto, CURRENT_TIMESTAMP)");
             $pagotransacstmt -> bindValue(':num_tarjeta', $num_Tarjeta, SQLITE3_TEXT);
             $pagotransacstmt -> bindValue(':nombre', $nombre, SQLITE3_TEXT);
             $pagotransacstmt -> bindValue(':monto', $monto_acreditar, SQLITE3_TEXT);
 
             if($pagotransacstmt -> execute()){
-                echo "El saldo se acredito exitosamente. Su saldo actual es de:" . $nuevosaldo;
+                echo "<div style='font-family: Arial, sans-serif; font-size: 18px; color: green; text-align: center; margin-top: 20px;'>
+                        <strong>¡El saldo se acreditó exitosamente!</strong><br>
+                        <p>Su saldo actual es de: <span style='font-size: 20px; font-weight: bold;'>" . $nuevosaldo . "</span></p>
+                      </div>";
             } else {
-                echo "Hubo un error en su transacción";
+                echo "<div style='font-family: Arial, sans-serif; font-size: 18px; color: red; text-align: center; margin-top: 20px;'>
+                        <strong>Hubo un error en su transacción</strong>
+                      </div>";
             }
 
         } else {
-            echo "Hubo un error al actualizar su saldo, lo sentimos";
+            echo "<div style='font-family: Arial, sans-serif; font-size: 18px; color: red; text-align: center; margin-top: 20px;'>
+                    <strong>Hubo un error al actualizar su saldo, lo sentimos</strong>
+                  </div>";
         }
     } else {
-        echo "El numero de la tarjeta no existe, vuelva a intentar";
+        echo "<div style='font-family: Arial, sans-serif; font-size: 18px; color: red; text-align: center; margin-top: 20px;'>
+                <strong>El número de la tarjeta no existe, vuelva a intentar</strong>
+              </div>";
     }
     
 } catch (Exception $e){
-    echo "Lo sentimos :( hubo un error en la acreditación: ". $e->getMessage();
+    echo "<div style='font-family: Arial, sans-serif; font-size: 18px; color: red; text-align: center; margin-top: 20px;'>
+            <strong>Lo sentimos :( hubo un error en la acreditación: </strong><br>" . $e->getMessage() . "
+          </div>";
 }
 ?>
+
+
+<div class="acredit-form">
+    <form action="acreditar.html">
+        <button type="submit" class="generar-btn">Regresar</button>
+    </form>
+</div>
