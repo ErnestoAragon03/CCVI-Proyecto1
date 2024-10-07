@@ -19,6 +19,10 @@ try{
 
 
     if($tarjeta){
+        //Eliminamos las transacciones que estaban asociadas a la tarjeta
+        $deletetransaccionesstmt = $db -> prepare("DELETE FROM transacciones WHERE num_tarjeta = :num_tarjeta");
+        $deletetransaccionesstmt -> bindValue(':num_tarjeta', $num_Tarjeta, SQLITE3_TEXT);
+        $deletetransaccionesstmt -> execute();
 
 
         $deletestmt = $db -> prepare("DELETE FROM tarjetas WHERE num_tarjeta = :num_tarjeta 
