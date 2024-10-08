@@ -55,7 +55,7 @@ try {
             $update_stmt->bindParam(':tarjeta', $tarjeta);
             $update_stmt->execute();
             
-            $status = 1;
+            $status = "APROBADO";
             // Aprobar la transacción
 
             // Registrar la transacción en la tabla transacciones
@@ -66,6 +66,19 @@ try {
             $insert_stmt->bindParam(':monto', $monto);
             $insert_stmt->bindParam(':tienda', $tienda);
             $insert_stmt->execute();
+            $numero = $db->lastInsertId();
+            /*
+            $stmt = $db->prepare('SELECT id
+                              FROM transacciones 
+                              WHERE num_tarjeta = :tarjeta 
+                              AND nombre = :titular 
+                              AND tipo = :tipo,
+                              AND tienda = :tienda');
+            $insert_stmt->bindParam(':tarjeta', $tarjeta);
+            $insert_stmt->bindParam(':nombre', $nombre);
+            $insert_stmt->bindParam(':monto', $monto);
+            $insert_stmt->bindParam(':tienda', $tienda);
+            $insert_stmt->execute();*/
         } else {
             // Rechazar la transacción e indicar el motivo
             if ($monto > $resultado['total']) {
@@ -74,7 +87,7 @@ try {
             else if ($monto > $resultado['monto_autorizado']) {
                 //echo "<p>Transacción rechazada: El monto autorizado es menor a la compra.</p>";
             }
-            $status = 0;
+            $status = "DENEGADO";
         }
 
         //Preparar datos
@@ -82,6 +95,7 @@ try {
             "emisor" => 'visa',
             "tarjeta" => $tarjeta,
             "status"=> $status,
+            "numero"=> $numero,
         ];
         /////////////Seleccionar tipo de formato////////////////
         if($formato === 'json') {
