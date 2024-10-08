@@ -21,9 +21,9 @@ $monto = $_GET['monto'] ?? null;
 $tienda = $_GET['tienda'] ?? null;
 $formato = $_GET['formato'] ?? null;
 //Confirmar que todos los datos están presentes
-if (!$tarjeta || !$nombre || !$fecha_venc || !$num_seguridad || !$monto || !$tienda || !$formato) {
+if (!$tarjeta || !$nombre || !$fecha_venc || !$num_seguridad || !$monto || !$tienda || ($formato != 'xml' && $formato != 'json')) {
     http_response_code(400); //Devolver error
-    echo "Faltan parámetros dentro de la solicitud";
+    echo "Faltan parámetros dentro de la solicitud o el formato es inválido";
     exit();
 }
 try {
@@ -88,6 +88,7 @@ try {
                 //echo "<p>Transacción rechazada: El monto autorizado es menor a la compra.</p>";
             }
             $status = "DENEGADO";
+            $numero = 0;
         }
 
         //Preparar datos
