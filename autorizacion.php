@@ -98,14 +98,20 @@ try {
             "status"=> $status,
             "numero"=> $numero,
         ];
+        //Encapsular todo en el campo autorizacion (esto para json únicamente)
+        $datos_autorizacion = [
+            "autorizacion" => $datos
+        ];
         /////////////Seleccionar tipo de formato////////////////
         if($formato === 'json') {
         //Formato JSON
         header('Content-Type: application/json');
-        echo json_encode($datos);
+        header('Access-Control-Allow-Origin: *');
+        echo json_encode($datos_autorizacion);
         } elseif($formato === 'xml') {
         //Formato XML
         header('Content-Type: application/xml');
+        header('Access-Control-Allow-Origin: *');
         $xml = new SimpleXMLElement('<autorizacion/>');
         array_walk_recursive($datos, function($value, $key) use ($xml) {
         $xml->addChild($key, $value);
